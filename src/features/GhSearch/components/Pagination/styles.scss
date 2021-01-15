@@ -1,0 +1,51 @@
+@import 'theme/colors.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.pagination--item {
+  width: 34px;
+  height: 34px;
+  margin: 0 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    color: blue;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &:hover > svg > path {
+    fill: blue;
+  }
+}
+
+.pagination--item.active {
+  font-weight: bold;
+  color: blue;
+}
+
+.pagination--icon {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination--item.disabled {
+  background: transparent;
+}
+
+.pagination--icon.disabled {
+  path {
+    fill: blue;
+  }
+}

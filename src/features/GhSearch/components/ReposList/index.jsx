@@ -7,12 +7,12 @@ import './styles.scss';
 
 const ReposList = () => {
   const repos = useSelector(getReposData);
-  console.log('repos', repos);
+  // console.log('repos', repos);
   const [sorted, setSorted] = useState([]);
 
   useEffect(() => {
     repos.length && sort('stargazers_count');
-  }, [repos.length]);
+  }, [repos]);
 
   const sort = (field) => {
     const sorted = repos.sort((a, b) => b[field] - a[field]);

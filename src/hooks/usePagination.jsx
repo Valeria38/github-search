@@ -1,20 +1,20 @@
-// import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-// const usePagination = (defaultPage, thunkCallback) => {
-//   const dispatch = useDispatch();
-//   const [page, setPage] = useState(defaultPage);
+const usePagination = (defaultPage, thunkCallback) => {
+  const dispatch = useDispatch();
+  const [page, setPage] = useState(defaultPage);
 
-//   const handleChange = (newPage) => {
-//     console.log('new page', newPage);
-//     setPage(newPage);
-//     dispatch(thunkCallback(newPage));
-//   };
+  const handleChange = (query, newPage) => {
+    // console.log('query, newPage', query, newPage);
+    setPage(newPage);
+    dispatch(thunkCallback(query, newPage));
+  };
 
-//   return {
-//     page,
-//     handleChange,
-//   };
-// };
+  return {
+    page,
+    handleChange,
+  };
+};
 
-// export default usePagination;
+export default usePagination;

@@ -2,12 +2,19 @@ import { handleActions } from 'redux-actions';
 
 import { statuses } from 'Constants';
 
-import { setReposData, setReposError, setTotal, setReposStatus } from 'features/GhSearch/actions';
+import {
+  setReposData,
+  setReposError,
+  setTotal,
+  setReposStatus,
+  setQuery,
+} from 'features/GhSearch/actions';
 
 const ghSearchState = {
   repos: [],
   status: statuses.none,
   total: 0,
+  query: '',
 };
 
 const ghSearch = handleActions(
@@ -29,6 +36,10 @@ const ghSearch = handleActions(
     [setReposStatus]: (state, { payload }) => ({
       ...state,
       status: payload,
+    }),
+    [setQuery]: (state, { payload }) => ({
+      ...state,
+      query: payload,
     }),
   },
   ghSearchState,
