@@ -81,7 +81,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html'),
-      favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
+      // favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
     }),
     new MiniCssExtractPlugin(),
     new DotEnv(),

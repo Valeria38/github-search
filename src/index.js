@@ -10,7 +10,7 @@ import './styles.scss';
 
 const Root = () => (
   <Provider store={store}>
-      <App />
+    <App />
   </Provider>
 );
 

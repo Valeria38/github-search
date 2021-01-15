@@ -1,7 +1,9 @@
+import GhSearch from 'features/GhSearch'
+
 const App = () => {
   return (
     <div>
-      App
+      <GhSearch />
     </div>
   );
 };
