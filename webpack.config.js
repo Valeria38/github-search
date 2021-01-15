@@ -91,11 +91,6 @@ module.exports = {
     open: true,
     // https: true,
     hot: true,
-    before: function (app) {
-      app.get('/', function (req, res) {
-        res.redirect('sign-in');
-      });
-    },
     historyApiFallback: true,
   },
   performance: { hints: false },

@@ -4,4 +4,3 @@ export const statuses = {
   success: 'success',
   error: 'error',
 };
-

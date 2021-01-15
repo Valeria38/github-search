@@ -12,9 +12,9 @@ const ghSearchState = {
 
 const ghSearch = handleActions(
   {
-    [setReposData]: (state, { payload }) => ({
+    [setReposData]: (state, { payload: { data } }) => ({
       ...state,
-      repos: payload,
+      repos: data,
       status: statuses.success,
     }),
     [setReposError]: (state, { payload }) => ({

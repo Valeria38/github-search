@@ -11,7 +11,7 @@ const SearchInput = () => {
   const debouncedQuery = useDebounce(query, 700);
 
   useEffect(() => {
-    dispatch(getRepos(debouncedQuery));
+    debouncedQuery && dispatch(getRepos(debouncedQuery));
   }, [debouncedQuery]);
 
   const handleChange = (event) => {
