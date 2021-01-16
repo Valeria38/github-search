@@ -1,0 +1,20 @@
+@import 'theme/colors.scss';
+@import 'theme/breakpoints.scss';
+
+.input {
+  width: 100%;
+  margin: 20px 0;
+  height: 30px;
+  padding-left: 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+
+  &:placeholder {
+    color: $lightGray;
+  }
+
+  @media (min-width: $md) {
+    width: 300px;
+  }
+}

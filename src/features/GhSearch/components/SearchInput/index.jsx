@@ -5,6 +5,8 @@ import { useDebounce } from 'hooks/useDebounce';
 
 import { setQuery as setQueryAction } from 'features/GhSearch/actions';
 
+import './styles.scss';
+
 const SearchInput = () => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
@@ -18,7 +20,15 @@ const SearchInput = () => {
     setQuery(event.target.value);
   };
 
-  return <input type="text" value={query} onChange={handleChange} />;
+  return (
+    <input
+      className="input"
+      type="text"
+      value={query}
+      onChange={handleChange}
+      placeholder="Search the repository..."
+    />
+  );
 };
 
 export default SearchInput;

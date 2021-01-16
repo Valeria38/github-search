@@ -7,6 +7,7 @@ export const setReposData = createAction('SET_REPOS_DATA', (data) => data);
 export const setTotal = createAction('SET_TOTAL', (total) => total);
 export const setReposError = createAction('SET_REPOS_ERROR', (error) => error);
 export const setQuery = createAction('SET_QUERY', (query) => query);
+export const setPage = createAction('SET_PAGE', (page) => page);
 
 export const getRepos = (query, page) => (dispatch) => {
   dispatch(setReposStatus(statuses.loading));

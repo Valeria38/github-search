@@ -11,6 +11,8 @@ import useRepos from 'features/GhSearch/hooks/useRepos';
 
 import { getTotal, getPage, getQuery, getReposData } from 'features/GhSearch/selectors';
 
+import './styles.scss';
+
 const GhSearch = () => {
   const [repos, setRepos] = useState([]);
   const reduxRepos = useSelector(getReposData);
@@ -32,11 +34,11 @@ const GhSearch = () => {
   }, [cachedRepos, reduxRepos]);
 
   return (
-    <>
+    <main className="main">
       <SearchInput />
       <ReposList repos={repos} />
       <Pagination onChange={handleChange} page={page} total={total} />
-    </>
+    </main>
   );
 };
 

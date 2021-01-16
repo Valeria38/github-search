@@ -1,11 +1,7 @@
-import GhSearch from 'features/GhSearch'
+import GhSearch from 'features/GhSearch';
 
 const App = () => {
-  return (
-    <div>
-      <GhSearch />
-    </div>
-  );
+  return <GhSearch />;
 };
 
 export default App;

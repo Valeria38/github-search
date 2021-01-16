@@ -14,11 +14,11 @@ const Pagination = ({ total, page, onChange }) => {
   const query = useSelector(getQuery);
   const pagesCount = Math.ceil(total / ITEMS_PER_PAGE);
   const handlePrev = () => {
-    page - 1 > 0 && onChange(query, page - 1);
+    page - 1 > 0 && onChange(page - 1);
   };
 
   const handleNext = () => {
-    page + 1 <= pagesCount && onChange(query, page + 1);
+    page + 1 <= pagesCount && onChange(page + 1);
   };
 
   const currentPages = pagesCount
@@ -29,7 +29,7 @@ const Pagination = ({ total, page, onChange }) => {
     : [];
 
   return (
-    <div className="pagination">
+    <div className={classNames('pagination', { hidden: !pagesCount })}>
       <div
         className={classNames('pagination--item', { disabled: page === 1 })}
         onClick={handlePrev}
@@ -40,7 +40,7 @@ const Pagination = ({ total, page, onChange }) => {
         <div
           key={index}
           className={classNames('pagination--item', { active: currPage === page })}
-          onClick={() => onChange(query, currPage)}
+          onClick={() => onChange(currPage)}
         >
           {currPage}
         </div>

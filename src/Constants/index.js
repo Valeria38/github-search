@@ -6,3 +6,18 @@ export const statuses = {
 };
 
 export const ITEMS_PER_PAGE = 30;
+
+export const months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
