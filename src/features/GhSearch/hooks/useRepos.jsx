@@ -5,10 +5,14 @@ import { getReposData } from 'features/GhSearch/selectors';
 
 import { getRepos } from 'features/GhSearch/actions';
 
+import usePrevious from 'hooks/usePrevious';
+
 const useRepos = (query, page) => {
   const dispatch = useDispatch();
   const repos = useSelector(getReposData);
   const [cachedRepos, setCachedRepos] = useState(null);
+
+  const prevQuery = usePrevious(query);
 
   useEffect(() => {
     if (!query) return;
@@ -17,9 +21,10 @@ const useRepos = (query, page) => {
     setCachedRepos(cachedRepos);
 
     if (!cachedRepos) {
-      dispatch(getRepos(query, page));
+      const updatedPage = query === prevQuery ? page : 1;
+      dispatch(getRepos(query, updatedPage));
     }
-  }, [query, page]);
+  }, [query, page, prevQuery]);
 
   return {
     cachedRepos,

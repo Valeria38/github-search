@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import ghSearch from 'features/GhSearch/reducers';
 
 const rootReducer = combineReducers({
-  ghSearch
+  ghSearch,
 });
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

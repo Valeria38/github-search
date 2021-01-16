@@ -6,6 +6,7 @@ export const statuses = {
 };
 
 export const ITEMS_PER_PAGE = 30;
+export const VISIBLE_PAGES = 10;
 
 export const months = [
   'Jan',

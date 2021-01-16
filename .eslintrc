@@ -1,20 +1,20 @@
 {
-    "extends": ["airbnb", "eslint:recommended", "plugin:jest/recommended"],
-    "settings": {
-        "import/resolver": "webpack"
-    },
-    "rules": {
-        "react/react-in-jsx-scope": "warn",
-        "react/jsx-filename-extension": "warn",
-        "react/jsx-props-no-spreading": "warn",
-        "react/react-in-jsx-scope": "off",
-    },
-    "globals": {
-        "window": true,
-        "document": true
-    },
-    "plugins": ["jest"],
-    "env": {
-        "jest/globals": true
-    }
+  "extends": ["airbnb", "eslint:recommended", "plugin:jest/recommended"],
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "warn",
+    "react/jsx-filename-extension": "warn",
+    "react/jsx-props-no-spreading": "warn",
+    "linebreak-style": 0
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  },
+  "plugins": ["jest"],
+  "env": {
+    "jest/globals": true
+  }
 }

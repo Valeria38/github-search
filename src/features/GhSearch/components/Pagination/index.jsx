@@ -1,9 +1,6 @@
-import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { getQuery } from 'features/GhSearch/selectors';
-
-import { ITEMS_PER_PAGE } from 'Constants';
+import { ITEMS_PER_PAGE, VISIBLE_PAGES } from 'Constants';
 
 import Prev from 'images/prev.svg';
 import Next from 'images/next.svg';
@@ -11,8 +8,8 @@ import Next from 'images/next.svg';
 import './styles.scss';
 
 const Pagination = ({ total, page, onChange }) => {
-  const query = useSelector(getQuery);
   const pagesCount = Math.ceil(total / ITEMS_PER_PAGE);
+
   const handlePrev = () => {
     page - 1 > 0 && onChange(page - 1);
   };
@@ -21,12 +18,14 @@ const Pagination = ({ total, page, onChange }) => {
     page + 1 <= pagesCount && onChange(page + 1);
   };
 
-  const currentPages = pagesCount
+  const pages = pagesCount
     ? Array(pagesCount)
         .fill(null)
-        .map((_, index) => index)
-        .slice(page, page + 10)
+        .map((_, index) => index + 1)
     : [];
+
+  const currentPages =
+    pagesCount > VISIBLE_PAGES ? pages.slice(page - 1, page + VISIBLE_PAGES - 1) : pages;
 
   return (
     <div className={classNames('pagination', { hidden: !pagesCount })}>

@@ -9,6 +9,7 @@ export const setReposError = createAction('SET_REPOS_ERROR', (error) => error);
 export const setQuery = createAction('SET_QUERY', (query) => query);
 export const setPage = createAction('SET_PAGE', (page) => page);
 
+/* eslint-disable no-undef */
 export const getRepos = (query, page) => (dispatch) => {
   dispatch(setReposStatus(statuses.loading));
   fetch(`${process.env.API_URL}/search/repositories?q=${query}&page=${page}`)
