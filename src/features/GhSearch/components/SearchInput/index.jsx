@@ -13,7 +13,7 @@ const SearchInput = () => {
   const debouncedQuery = useDebounce(query, 700);
 
   useEffect(() => {
-    debouncedQuery && dispatch(setQueryAction(debouncedQuery));
+    dispatch(setQueryAction(debouncedQuery));
   }, [debouncedQuery]);
 
   const handleChange = (event) => {
@@ -27,6 +27,7 @@ const SearchInput = () => {
       value={query}
       onChange={handleChange}
       placeholder="Search the repository..."
+      data-testid="search-input"
     />
   );
 };

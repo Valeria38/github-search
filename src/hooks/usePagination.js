@@ -14,11 +14,9 @@ const usePagination = (defaultPage) => {
   const handleChange = (newPage) => {
     setPage(newPage);
   };
-
   return {
     page,
     handleChange,
   };
 };
-
 export default usePagination;

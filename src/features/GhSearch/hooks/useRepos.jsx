@@ -15,9 +15,9 @@ const useRepos = (query, page) => {
   const prevQuery = usePrevious(query);
 
   useEffect(() => {
-    if (!query) return;
-
-    const cachedRepos = repos.find((repo) => repo.query === query && repo.page === page);
+    const cachedRepos = repos.find(
+      (repo) => repo.query === query && repo.page === page,
+    );
     setCachedRepos(cachedRepos);
 
     if (!cachedRepos) {

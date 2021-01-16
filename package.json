@@ -10,7 +10,7 @@
     "start": "webpack serve",
     "build": "webpack",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d b`uild",
     "lint": "eslint ./src",
     "test": "jest"
   },
@@ -20,6 +20,7 @@
     "@babel/preset-react": "^7.12.10",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
+    "@testing-library/react-hooks": "^5.0.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.1",
     "dotenv-webpack": "^6.0.0",

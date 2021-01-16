@@ -9,7 +9,12 @@ import usePagination from 'hooks/usePagination';
 
 import useRepos from 'features/GhSearch/hooks/useRepos';
 
-import { getTotal, getPage, getQuery, getReposData } from 'features/GhSearch/selectors';
+import {
+  getTotal,
+  getPage,
+  getQuery,
+  getReposData,
+} from 'features/GhSearch/selectors';
 
 import './styles.scss';
 
@@ -26,7 +31,9 @@ const GhSearch = () => {
 
   useEffect(() => {
     if (!cachedRepos) {
-      const repos = reduxRepos.find((repo) => repo.query === query && repo.page === page);
+      const repos = reduxRepos.find(
+        (repo) => repo.query === query && repo.page === page,
+      );
       setRepos(repos?.data);
     } else {
       setRepos(cachedRepos.data);

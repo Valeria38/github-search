@@ -11,3 +11,7 @@
 - To open the project locally run
 
 ## yarn start
+
+- To run tests run
+
+## yarn test
