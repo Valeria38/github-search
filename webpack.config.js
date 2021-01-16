@@ -17,7 +17,7 @@ module.exports = {
       features: path.resolve(__dirname, 'src/features/'),
       Constants: path.resolve(__dirname, 'src/Constants/'),
       images: path.resolve(__dirname, 'src/images/'),
-      common: path.resolve(__dirname, 'src/features/Common'),
+      Common: path.resolve(__dirname, 'src/features/Common'),
       store: path.resolve(__dirname, 'src/store'),
       hooks: path.resolve(__dirname, 'src/hooks/'),
       helpers: path.resolve(__dirname, 'src/helpers/'),

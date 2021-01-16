@@ -66,17 +66,3 @@
     fill: $yellow;
   }
 }
-
-.repos--no-data {
-  display: flex;
-  flex-direction: column;
-}
-
-.repos--empty-icon {
-  width: 60px;
-  height: 60px;
-
-  path {
-    fill: $blue;
-  }
-}

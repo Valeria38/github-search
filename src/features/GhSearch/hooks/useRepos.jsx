@@ -20,6 +20,10 @@ const useRepos = (query, page) => {
     );
     setCachedRepos(cachedRepos);
 
+    if (cachedRepos && !query) {
+      dispatch(getRepos('', 1));
+    }
+
     if (!cachedRepos) {
       const updatedPage = query === prevQuery ? page : 1;
       dispatch(getRepos(query, updatedPage));

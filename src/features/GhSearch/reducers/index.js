@@ -9,6 +9,7 @@ import {
   setReposStatus,
   setQuery,
   setPage,
+  setStatus,
 } from 'features/GhSearch/actions';
 
 const ghSearchState = {
@@ -49,6 +50,10 @@ const ghSearch = handleActions(
     [setPage]: (state, { payload }) => ({
       ...state,
       page: payload,
+    }),
+    [setStatus]: (state, { payload }) => ({
+      ...state,
+      status: payload,
     }),
   },
   ghSearchState,

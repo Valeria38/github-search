@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import SearchInput from 'features/GhSearch/components/SearchInput';
 import ReposList from 'features/GhSearch/components/ReposList';
 import Pagination from 'features/GhSearch/components/Pagination';
+import StatusController from 'Common/StatusController';
 
 import usePagination from 'hooks/usePagination';
 
@@ -14,6 +15,7 @@ import {
   getPage,
   getQuery,
   getReposData,
+  getReposStatus,
 } from 'features/GhSearch/selectors';
 
 import './styles.scss';
@@ -24,6 +26,7 @@ const GhSearch = () => {
   const total = useSelector(getTotal);
   const reduxPage = useSelector(getPage);
   const query = useSelector(getQuery);
+  const status = useSelector(getReposStatus);
 
   const { page, handleChange } = usePagination(reduxPage);
 
@@ -43,8 +46,10 @@ const GhSearch = () => {
   return (
     <main className="main">
       <SearchInput />
-      <ReposList repos={repos} />
-      <Pagination onChange={handleChange} page={page} total={total} />
+      <StatusController status={status}>
+        <ReposList repos={repos} />
+        <Pagination onChange={handleChange} page={page} total={total} />
+      </StatusController>
     </main>
   );
 };

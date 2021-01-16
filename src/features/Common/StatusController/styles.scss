@@ -1,0 +1,22 @@
+@import 'theme/colors';
+
+.status-controller {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+
+  path {
+    fill: $blue;
+  }
+}

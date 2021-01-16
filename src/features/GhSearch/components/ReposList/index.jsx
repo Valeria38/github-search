@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 import Star from 'images/star.svg';
-import NoData from 'images/noData.svg';
 
 import formatDate from 'helpers/formatDate';
 import sortByField from 'helpers/sortByField';
@@ -18,7 +17,7 @@ const ReposList = ({ repos }) => {
     }
   }, [repos]);
 
-  return sorted.length ? (
+  return (
     <section className="repos">
       {sorted.map((repo) => (
         <a
@@ -38,8 +37,14 @@ const ReposList = ({ repos }) => {
               Owner:&nbsp;
               <span className="repos-repo-owner">{repo.owner.login}</span>
             </div>
-            <div>Created on {formatDate(repo.created_at)}</div>
-            <div>Watchers: {repo.watchers_count}</div>
+            <div>
+              Created on
+              {formatDate(repo.created_at)}
+            </div>
+            <div>
+              Watchers:
+              {repo.watchers_count}
+            </div>
             <img
               className="repos-avatar"
               src={repo.owner.avatar_url}
@@ -49,11 +54,6 @@ const ReposList = ({ repos }) => {
         </a>
       ))}
     </section>
-  ) : (
-    <div className="repos--no-data">
-      No data.
-      <NoData className="repos--empty-icon" />
-    </div>
   );
 };
 
