@@ -6,3 +6,5 @@ export const getReposStatus = createSelector(ghSearch, (state) => state.status);
 export const getReposData = createSelector(ghSearch, ({ repos }) => repos);
 export const getTotal = createSelector(ghSearch, ({ total }) => total);
 export const getQuery = createSelector(ghSearch, ({ query }) => query);
+export const getPage = createSelector(ghSearch, ({ page }) => page);
+export const getError = createSelector(ghSearch, ({ error }) => error);

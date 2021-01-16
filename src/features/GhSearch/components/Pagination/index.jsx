@@ -21,10 +21,12 @@ const Pagination = ({ total, page, onChange }) => {
     page + 1 <= pagesCount && onChange(query, page + 1);
   };
 
-  const currentPages = Array(pagesCount)
-    .fill(null)
-    .map((_, index) => index)
-    .slice(page, page + 10);
+  const currentPages = pagesCount
+    ? Array(pagesCount)
+        .fill(null)
+        .map((_, index) => index)
+        .slice(page, page + 10)
+    : [];
 
   return (
     <div className="pagination">

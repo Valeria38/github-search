@@ -1,31 +1,32 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-
-import { getReposData } from 'features/GhSearch/selectors';
 
 import './styles.scss';
 
-const ReposList = () => {
-  const repos = useSelector(getReposData);
-  // console.log('repos', repos);
+const ReposList = ({ repos }) => {
   const [sorted, setSorted] = useState([]);
 
   useEffect(() => {
-    repos.length && sort('stargazers_count');
+    if (repos) {
+      const sorted = sort([...repos], 'stargazers_count');
+      setSorted(sorted);
+    }
   }, [repos]);
 
-  const sort = (field) => {
-    const sorted = repos.sort((a, b) => b[field] - a[field]);
-    setSorted(sorted);
+  const sort = (array, field) => {
+    return array.sort((a, b) => b[field] - a[field]);
   };
 
-  return sorted.map((repo) => (
-    <div className="repo" key={repo.id}>
-      <div>Repository name: {repo.name}</div>
-      <div>Stars: {repo.stargazers_count}</div>
-      <div>Owner: {repo.owner.login}</div>
-    </div>
-  ));
+  return sorted ? (
+    sorted.map((repo) => (
+      <div className="repo" key={repo.id}>
+        <div>Repository name: {repo.name}</div>
+        <div>Stars: {repo.stargazers_count}</div>
+        <div>Owner: {repo.owner.login}</div>
+      </div>
+    ))
+  ) : (
+    <div>No items.</div>
+  );
 };
 
 export default ReposList;

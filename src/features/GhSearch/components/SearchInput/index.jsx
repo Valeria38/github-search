@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { useDebounce } from 'hooks/useDebounce';
 
-import { getRepos } from 'features/GhSearch/actions';
+import { setQuery as setQueryAction } from 'features/GhSearch/actions';
 
 const SearchInput = () => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const SearchInput = () => {
   const debouncedQuery = useDebounce(query, 700);
 
   useEffect(() => {
-    debouncedQuery && dispatch(getRepos(debouncedQuery));
+    debouncedQuery && dispatch(setQueryAction(debouncedQuery));
   }, [debouncedQuery]);
 
   const handleChange = (event) => {

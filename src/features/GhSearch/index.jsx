@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import SearchInput from 'features/GhSearch/components/SearchInput';
@@ -6,19 +7,34 @@ import Pagination from 'features/GhSearch/components/Pagination';
 
 import usePagination from 'hooks/usePagination';
 
-import { getRepos } from 'features/GhSearch/actions';
+import useRepos from 'features/GhSearch/hooks/useRepos';
 
-import { getTotal } from 'features/GhSearch/selectors';
+import { getTotal, getPage, getQuery, getReposData } from 'features/GhSearch/selectors';
 
 const GhSearch = () => {
+  const [repos, setRepos] = useState([]);
+  const reduxRepos = useSelector(getReposData);
   const total = useSelector(getTotal);
+  const reduxPage = useSelector(getPage);
+  const query = useSelector(getQuery);
 
-  const { page, handleChange } = usePagination(1, getRepos);
+  const { page, handleChange } = usePagination(reduxPage);
+
+  const { cachedRepos } = useRepos(query, page);
+
+  useEffect(() => {
+    if (!cachedRepos) {
+      const repos = reduxRepos.find((repo) => repo.query === query && repo.page === page);
+      setRepos(repos?.data);
+    } else {
+      setRepos(cachedRepos.data);
+    }
+  }, [cachedRepos, reduxRepos]);
 
   return (
     <>
       <SearchInput />
-      <ReposList />
+      <ReposList repos={repos} />
       <Pagination onChange={handleChange} page={page} total={total} />
     </>
   );

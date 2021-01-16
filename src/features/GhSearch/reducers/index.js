@@ -15,14 +15,18 @@ const ghSearchState = {
   status: statuses.none,
   total: 0,
   query: '',
+  page: 1,
+  error: '',
 };
 
 const ghSearch = handleActions(
   {
-    [setReposData]: (state, { payload: { data } }) => ({
+    [setReposData]: (state, { payload: { query, page, data } }) => ({
       ...state,
-      repos: data,
+      repos: [...state.repos, { query, page, data }],
       status: statuses.success,
+      query,
+      page,
     }),
     [setReposError]: (state, { payload }) => ({
       ...state,
