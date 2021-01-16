@@ -10,7 +10,6 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'main.js',
-    publicPath: '/',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
@@ -81,7 +80,7 @@ module.exports = {
     new HTMLWebpackPlugin({
       filename: 'index.html',
       template: path.resolve(__dirname, 'src/index.html'),
-      // favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
+      favicon: path.resolve(__dirname, 'src/images/favicon.ico'),
     }),
     new MiniCssExtractPlugin(),
     new DotEnv(),
@@ -89,9 +88,7 @@ module.exports = {
   ],
   devServer: {
     open: true,
-    // https: true,
     hot: true,
-    historyApiFallback: true,
   },
   performance: { hints: false },
 };
