@@ -6,12 +6,12 @@ export const setReposStatus = createAction(
   'SET_REPOS_STATUS',
   (status) => status,
 );
-export const setReposData = createAction('SET_REPOS_DATA', (data) => data);
-export const setTotal = createAction('SET_TOTAL', (total) => total);
-export const setReposError = createAction('SET_REPOS_ERROR', (error) => error);
-export const setQuery = createAction('SET_QUERY', (query) => query);
-export const setPage = createAction('SET_PAGE', (page) => page);
-export const setStatus = createAction('SET_STATUS', (status) => status);
+export const setReposData = createAction('SET_REPOS_DATA');
+export const setTotal = createAction('SET_TOTAL');
+export const setReposError = createAction('SET_REPOS_ERROR');
+export const setQuery = createAction('SET_QUERY');
+export const setPage = createAction('SET_PAGE');
+export const setStatus = createAction('SET_STATUS');
 
 /* eslint-disable no-undef */
 export const getRepos = (query, page) => (dispatch) => {
@@ -26,6 +26,9 @@ export const getRepos = (query, page) => (dispatch) => {
     .then((data) => {
       dispatch(setReposData({ query, page, data: data.items }));
       dispatch(setTotal(data.total_count));
+      if (!data.items.length) {
+        dispatch(setStatus(statuses.empty));
+      }
     })
     .catch((err) => {
       setReposError(err);

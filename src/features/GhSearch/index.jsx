@@ -29,19 +29,14 @@ const GhSearch = () => {
   const status = useSelector(getReposStatus);
 
   const { page, handleChange } = usePagination(reduxPage);
-
-  const { cachedRepos } = useRepos(query, page);
+  useRepos(query, page);
 
   useEffect(() => {
-    if (!cachedRepos) {
-      const repos = reduxRepos.find(
-        (repo) => repo.query === query && repo.page === page,
-      );
-      setRepos(repos?.data);
-    } else {
-      setRepos(cachedRepos.data);
-    }
-  }, [cachedRepos, reduxRepos]);
+    const repos = reduxRepos.find(
+      (repo) => repo.query === query && repo.page === page,
+    );
+    setRepos(repos?.data);
+  }, [reduxRepos, query, page]);
 
   return (
     <main className="main">

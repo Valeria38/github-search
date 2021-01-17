@@ -10,7 +10,7 @@
     "start": "webpack serve",
     "build": "webpack",
     "predeploy": "yarn run build",
-    "deploy": "gh-pages -d b`uild",
+    "deploy": "gh-pages -d build",
     "lint": "eslint ./src",
     "test": "jest"
   },

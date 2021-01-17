@@ -3,6 +3,7 @@ export const statuses = {
   loading: 'loading',
   success: 'success',
   error: 'error',
+  empty: 'empty',
 };
 
 export const ITEMS_PER_PAGE = 30;

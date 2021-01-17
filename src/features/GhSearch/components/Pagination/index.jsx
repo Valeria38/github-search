@@ -1,9 +1,12 @@
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 
 import { ITEMS_PER_PAGE, VISIBLE_PAGES } from 'Constants';
 
 import { getQuery } from 'features/GhSearch/selectors';
+
+import usePrevious from 'hooks/usePrevious';
 
 import Prev from 'images/prev.svg';
 import Next from 'images/next.svg';
@@ -13,6 +16,13 @@ import './styles.scss';
 const Pagination = ({ total, page, onChange }) => {
   const pagesCount = Math.ceil(total / ITEMS_PER_PAGE);
   const query = useSelector(getQuery);
+  const prevQuery = usePrevious(query);
+
+  useEffect(() => {
+    if (query !== prevQuery && prevQuery !== undefined) {
+      onChange(1);
+    }
+  }, [query, prevQuery]);
 
   const handlePrev = () => {
     page - 1 > 0 && onChange(page - 1);

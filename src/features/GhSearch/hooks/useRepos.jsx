@@ -3,16 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { getReposData } from 'features/GhSearch/selectors';
 
-import { getRepos } from 'features/GhSearch/actions';
+import { getRepos, setStatus } from 'features/GhSearch/actions';
 
-import usePrevious from 'hooks/usePrevious';
+import { statuses } from 'Constants';
 
 const useRepos = (query, page) => {
   const dispatch = useDispatch();
   const repos = useSelector(getReposData);
   const [cachedRepos, setCachedRepos] = useState(null);
-
-  const prevQuery = usePrevious(query);
 
   useEffect(() => {
     const cachedRepos = repos.find(
@@ -20,15 +18,14 @@ const useRepos = (query, page) => {
     );
     setCachedRepos(cachedRepos);
 
-    if (cachedRepos && !query) {
-      dispatch(getRepos('', 1));
-    }
-
     if (!cachedRepos) {
-      const updatedPage = query === prevQuery ? page : 1;
-      dispatch(getRepos(query, updatedPage));
+      dispatch(getRepos(query, page));
+    } else if (query) {
+      dispatch(setStatus(statuses.success));
+    } else if (!query) {
+      dispatch(setStatus(statuses.none));
     }
-  }, [query, page, prevQuery]);
+  }, [query, page]);
 
   return {
     cachedRepos,

@@ -15,6 +15,7 @@ const StatusController = ({ status, children }) => {
         return <Loader />;
       case statuses.error:
         return <span>Error</span>;
+      case statuses.empty:
       default:
         return (
           <div className="no-data">
